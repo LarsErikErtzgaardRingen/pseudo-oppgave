@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lær Pseudo-elementer</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+
+  <h1>Lær Pseudo-elementer</h1>
+  <p class="intro">En liten oppgaveside som viser ::before, ::after og et knippe pseudo-selektorer i praksis.</p>
+
+  <h2>Uordnet liste (5+ elementer)</h2>
+  <ul class="emne-liste">
+    <li>::before – legger innhold foran et element</li>
+    <li>::after – legger innhold etter et element</li>
+    <li>:nth-child() – velger elementer etter posisjon</li>
+    <li>:hover – reagerer på musepeker</li>
+    <li>:first-child og :last-child – velger ytterpunktene i en liste</li>
+    <li>:not() – ekskluderer bestemte elementer fra en regel</li>
+  </ul>
+
+  <h2>Seksjon med tre underseksjoner</h2>
+  <section class="kort-seksjon">
+    <div>
+      <strong>::before / ::after</strong>
+      Legger til dekorativt eller funksjonelt innhold uten ekstra HTML-elementer.
+    </div>
+    <div>
+      <strong>Strukturelle selektorer</strong>
+      :nth-child, :first-child og :last-child styler basert på posisjon.
+    </div>
+    <div>
+      <strong>Tilstandsselektorer</strong>
+      :hover og :not() styler basert på interaksjon og unntak.
+    </div>
+  </section>
+
+  <h2>Interaktiv knapp</h2>
+  <button class="aksjon" id="knapp">Vis en tilfeldig CSS-tips</button>
+  <p id="status"></p>
+
+</main>
+
+<script>
+  // Enkel interaktiv handling: knappen viser et tilfeldig tips ved klikk.
+  const tips = [
+    "::before og ::after krever alltid en content-egenskap for å vises.",
+    "Pseudo-elementer teller som 'siste barn' av elementet de er festet til.",
+    ":nth-child(odd) og :nth-child(even) er kortformer for 2n+1 og 2n.",
+    ":not() kan kombineres med nesten alle andre selektorer.",
+    "Transition på :hover bør også settes på grunntilstanden, ikke bare på :hover."
+  ];
+
+  const knapp = document.getElementById("knapp");
+  const status = document.getElementById("status");
+
+  knapp.addEventListener("click", () => {
+    const tilfeldig = tips[Math.floor(Math.random() * tips.length)];
+    status.textContent = tilfeldig;
+  });
+</script>
+</body>
+</html>
